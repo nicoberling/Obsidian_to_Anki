@@ -243,7 +243,7 @@ abstract class AbstractFile {
         let actions: AnkiConnect.AnkiConnectRequest[] = []
         for (let parsed of this.notes_to_edit) {
             actions.push(
-                AnkiConnect.addTags([parsed.identifier], parsed.note.tags.join(" ") + " " + this.global_tags)
+                AnkiConnect.addTags([parsed.identifier], parsed.note.tags.join(" ") + " " + this.global_tags + this.data.add_obs_file_tags ? " " + this.file_cache.tags.join(" ") : "")
             )
         }
         return AnkiConnect.multi(actions)
